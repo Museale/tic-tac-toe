@@ -1,0 +1,5 @@
+1 
+
+[] It should have a gameboard
+[] It should store the gameboard as an array inside a Gameboard object
+[] It should have a factory function for creating player objects
