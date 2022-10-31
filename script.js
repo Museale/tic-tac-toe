@@ -1,79 +1,25 @@
-
-// Gameboard module
-const GameBoardModule = (() => {
-    let gameBoard = {
-      gameBoardArr:  (() => {
-        let gameBoardCells = [];
-        for (let i = 0; i < 9; i++) {
-          let cell = document.createElement('div');
-          cell.classList.add('cell');
-          gameBoardCells.push(cell);
-          }
-        console.log(gameBoardCells)
-      })(),
-      } 
-     return {
-      gameBoard
-     }
-    
-  })();
+const Gameboard = (() => {
+  let board = {
+    cells: [],
+  }
   
-// Player factory module
-const playerFactory = (username, number) => {
-
-  const greetPlayer = () => console.log(`Good luck! ${username}. You are the ${number} player.`);
-  return { 
-      username, 
-      number,
-      greetPlayer 
-  };
-};
-
-const playerOne = playerFactory ('Player One', 1);
-const playerTwo = playerFactory('Player Two', 2);
-
-playerOne.greetPlayer();
-playerTwo.greetPlayer();
-
-// Gameplay module 
-
-const GamePlay = (() => {
-    let play = {
-      
-    }
+  return {
+    board
+  }
 })();
-// DisplayController module
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// //Write a factory function for players
+const placeCells = (() => {
+ const container = document.querySelectorAll("#gameboard-container > div");
+ let index = 0;
+ 
+Array.from(container).forEach(element => {
+  element.id = index++;
+  Gameboard.board.cells.push(element);
+  element.classList.add('board')
+    element.addEventListener('click', (e) => {
+      console.log(e.target)
+      });
+      console.log(Gameboard.board.cells);
+  });
+}
+)();
