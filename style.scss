@@ -1,13 +1,73 @@
+
+*  {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: cursive;
+    font-weight: light;
+    color: rgb(254, 255, 255);
+    text-shadow: 1px 3px 5px rgba(77, 9, 77, 0.644);
+}
+
 #gameboard-container {
     display: grid;
     width: 500px;
     height: 500px;
     grid-template-columns: repeat(3,1fr);
     grid-template-rows: repeat(3, 1fr);
-    gap: 1px;
+   
 
 }
 
 #gameboard-container > div {
-    border: 1px solid gray;
+    border: 1px solid rgba(77, 9, 77, 0.185);;
+}
+
+#gameboard-container {
+
+ div:nth-child(1) {
+    border-top: none;
+    border-left: none;
+}
+    div:nth-child(2) {
+        border-top: none;
+    }
+    div:nth-child(3) {
+        border-top: none;
+        border-right: none;
+    }
+    div:nth-child(4) {
+        border-left: none;
+    }
+    div:nth-child(6){
+        border-right: none;
+    }
+    div:nth-child(7) {
+        border-left: none;
+        border-bottom: none;
+    }
+    div:nth-child(8) {
+        border-bottom: none;
+    }
+    div:nth-child(9) {
+        border-right: none;
+        border-bottom: none;
+    }
+}
+
+
+.cell {
+    display: flex;
+    font-size: 100px;
+    align-items: center;
+    justify-content: center;
+}
+
+.X::before {
+    content: "X";
+
+}
+
+.O::before {
+    content: "O";
 }
