@@ -1,32 +1,29 @@
 const Gameboard = (() => {
+  let index = 0;
   let board = {
     cells: [],
-    
   }
-  console.log(board.cells, 'in top');
+  const _placeCells = (() => {
+      Array.from(document.querySelectorAll("#gameboard-container > div")).forEach(element => {
+        element.id = index++;
+        element.classList.add('cell')
+        board.cells.push(element);
+      })
+    })();
+    const _clearCells = (() => {
+      const clearBtn = document.querySelector('#clear');
+      clearBtn.addEventListener('click', () => {
+        window.location.reload();
+      })
+    })();
+      console.log(board.cells)
   return {
-    board
+    board,
+    _placeCells,
+    _clearCells 
   }
 })();
 
-const placeCells = (() => {
-  const container = document.querySelectorAll("#gameboard-container > div");
-    let index = 0;
-    const cellArray = Array.from(container);
-      cellArray.forEach(element => {
-        element.id = index++;
-        element.classList.add('cell')
-        Gameboard.board.cells.push(element);
-       
-        });
-        console.log(Gameboard.board.cells);
-        return {
-          container,
-          cellArray
-        }
-      }
-     
-)();
 
 const PlayerFactory = (name, marker) => {
   const getMarker = () => marker;
@@ -39,32 +36,22 @@ const PlayerFactory = (name, marker) => {
 
 const playerOne = PlayerFactory('Jeff', 'X');
 const playerTwo = PlayerFactory('Muta', 'O');
-// console.log(playerOne)
 
 const gamePlay = (() => {
   let turn = false;
-  placeCells.cellArray.forEach(
-    element => { 
+   Gameboard.board.cells.forEach(element => { 
     element.addEventListener('click', (e) => {
-      console.log(e.target);
       if (!turn && !e.target.classList.contains('O')) {
-        
         e.target.classList.add('X');
-       turn = true;
+        turn = true;
      }
-     else if (turn && !e.target.classList.contains('X')){
-
-      e.target.classList.add('O');
-     turn = false;
+     else if (turn && !e.target.classList.contains('X')) {
+        e.target.classList.add('O');
+        turn = false;
      }
       });
-
-
   return {
-    turn
+    turn 
   }
 })})();
 
-const winner = (() => {
-   
-})()
