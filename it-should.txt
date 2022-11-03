@@ -3,3 +3,14 @@
 [] It should have a gameboard
 [] It should store the gameboard as an array inside a Gameboard object
 [] It should have a factory function for creating player objects
+
+
+If the previous and the next item has the same class and the next item is not 3 or 6 and the previous item is not 2, 4, 7 
+
+If every third item had 2 following items with the same class
+
+If 0, 4, and 8 has the same class or 2, 4, 6 has the same class 
+
+if start at 3 and every 2nd item has the same class
+If start at 0 and every fourth item has the same class
+If every 3rd item in the array has the same class
