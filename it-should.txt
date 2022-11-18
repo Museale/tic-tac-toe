@@ -14,3 +14,41 @@ If 0, 4, and 8 has the same class or 2, 4, 6 has the same class
 if start at 3 and every 2nd item has the same class
 If start at 0 and every fourth item has the same class
 If every 3rd item in the array has the same class
+
+//Check winner, should check for three in a row and a tie
+
+//if 0, 1, 2 === equal - win
+//if 3, 4, 5 === equal - win
+//if 6, 7, 8 === equal - win
+
+//if 0, 3, 6 === equal - win
+//if 1, 4, 7 === equal - win
+//if 2, 5, 8 === equal - win
+
+//if 0, 4, 8 === equal - win
+//if 2, 4, 6 === equal - win
+
+//if none of the above & 8 cells marked === tie
+
+
+//would it be eaier to make one array for each row and one for each column, and then two for diagonals?
+//Or should I hardcode a check for each 
+//use splice,filter to make new arrays of the main array to check for tie or win?
+
+
+//if three in column or row 1 
+
+array.splice(0, 3)
+for (let i = 0; i < array.length; i += nth) {
+   if (array[i].classList.contains('X') {
+    winnerArr.push(array[i]);
+   }
+}
+
+'
+if three in one column has the same class
+or three in a row has the same class
+or the first in row 1, second in row 2, and 3rd in row 3
+
+or the third, second, and first in each row
+

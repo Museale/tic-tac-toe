@@ -19,7 +19,7 @@ const Gameboard = (() => {
             window.location.reload();
           })
         })();
-          // console.log(board.cells)
+
       return {
         board,
         _placeCells,
@@ -30,18 +30,13 @@ const Gameboard = (() => {
 
 
 const PlayerFactory = (name, marker) => {
-
       const getMarker = () => marker;
       const getName = () => name;
         return {
           getMarker,
           getName,
         }
-
 };
-
-const playerOne = PlayerFactory('Jeff', 'X');
-const playerTwo = PlayerFactory('Muta', 'O');
 
 const gamePlay = (() => {
       let turn = false; 
@@ -65,66 +60,74 @@ const gamePlay = (() => {
 });
 })();
 
-//Check winner, should check for three in a row and a tie
-
-//if 0, 1, 2 === equal - win
-//if 3, 4, 5 === equal - win
-//if 6, 7, 8 === equal - win
-
-//if 0, 3, 6 === equal - win
-//if 1, 4, 7 === equal - win
-//if 2, 5, 8 === equal - win
-
-//if 0, 4, 8 === equal - win
-//if 2, 4, 6 === equal - win
-
-//if none of the above & 8 cells marked === tie
 
 
-//would it be eaier to make one array for each row and one for each column, and then two for diagonals?
-//Or should I hardcode a check for each 
-//use splice,filter to make new arrays of the main array to check for tie or win?
+function checkWin () {
+  const cells = Gameboard.board.cells;
+    let winnerArr = [];
+    let xWinnerArr=[];
 
-
-//if three in column or row 1 
-
-
-// function checkWin () {
-//   const cells = Gameboard.board.cells;
-//     let winnerArr = [];
+// for (let i = 0; i < cells.length; i += nth) {
+//    if (cells[i].classList.contains('X') && winnerArr.length < 3) {
+//     winnerArr.push(cells[i]);
+//     console.log(winnerArr)
+//    } else if (winnerArr > 3) {
+//     console.log("X WINS")
+//    }
+//    }
   // if (cells[0].classList.contains('X') 
   //   && cells[1].classList.contains('X') 
   //   && cells[2].classList.contains('X')) {
   //   console.log('winner')
-    
   // }
-  // const win =  (array, nth) => {
+
+  let firstRow = cells.slice(0,3);
+  let secondRow = cells.slice(3,6);
+  let thirdRow = cells.slice(6, 9);
+  // let firstColumn = cells.pop(0, 3, 6);
+  // console.log(firstColumn)
+
+function checkClass (array, marker) {
+  array.map(item => item.classList.contains(marker) && marker === 'X' ? array.push(item) : false);
+  if  (array.length >= 6) {
+    console.log(marker, 'Wins everything now')
+  }
+}
+
+checkClass(firstRow, 'X');
+checkClass(secondRow, 'X');
+checkClass(thirdRow, 'X');
+
+
+//  if (firstRow.length >= 6 || secondRow.length >= 6 || thirdRow.length >= 6) {
+//   console.log('X WINS ALL')
+//  }
+
+//   const win =  (array, nth) => {
+//     for (let i = 0; i < array.length; i += nth) {
+//       winnerArr.push(array[i]);
+//       console.log(i)
+//     }
   
-  //   for (let i = 0; i < array.length; i += nth) {
-  //     winnerArr.push(array[i]);
-  //     console.log(winnerArr)
-  //   }
-  
-  //   cells.map(item => { 
-  //     item.classList.contains('X') ?
-  //      xWinnerArr.push(item) 
-  //     : false
-  //     })
-  //     console.log(xWinnerArr)
-  // }
-    
-    
-  //      item.classList.contains('X') ? console.log(item) : false })
-  // // };
-  // const oWin = () => {
-  //   cells.filter(item => { 
-  //     item.classList.contains('O') ? console.log(item, 'these are o') : false})
-  // }
-  // }
+// if(winnerArr[0].classList.contains('X')) {
+//   console.log("hello")
 // }
+//    
+//       console.log(xWinnerArr)
+//       // item.classList.contains('X') ? console.log(item) : false 
+//   }
+    
+//   const oWin = () => {
+//     cells.filter(item => { 
+//       item.classList.contains('O') ? console.log(item, 'these are o') : false})
+//   }
+  
+//   oWin();
 //   win(cells, 3);
+//   win(cells, 2);
+//   win(cells, 4)
+
 //   return {
 //     winnerArr
 //   }
-  // oWin();
-// };
+}

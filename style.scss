@@ -5,8 +5,17 @@
     box-sizing: border-box;
     font-family: cursive;
     font-weight: light;
-    color: rgb(254, 255, 255);
-    text-shadow: 1px 3px 5px rgba(77, 9, 77, 0.644);
+    width: 100%;
+   overflow: hidden;
+}
+#wrapper {
+    display: grid;
+    grid-template-columns: repeat(2, 100px) 1fr;
+
+    align-items: center;
+    justify-content: center;
+    gap: 40px;
+    margin: 5em;
 }
 
 #gameboard-container {
@@ -15,12 +24,13 @@
     height: 500px;
     grid-template-columns: repeat(3,1fr);
     grid-template-rows: repeat(3, 1fr);
-   
+    text-shadow: 1px 3px 5px rgba(77, 9, 77, 0.644);
 
 }
 
 #gameboard-container > div {
-    border: 1px solid rgba(77, 9, 77, 0.185);;
+    border: 1px solid rgba(77, 9, 77, 0.185);
+    color: rgb(254, 255, 255);
 }
 
 #gameboard-container {
