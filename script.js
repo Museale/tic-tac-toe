@@ -50,57 +50,16 @@ const gamePlay = (() => {
             turn = false;
             }
           });
-        return {
-          turn 
-        };
+       
 });
+
+  let checkWin = (() => {
+
+  })
+  
+ return {
+  turn,
+  checkWin
+ }
 })();
 
-
-// let checkWin = ()=> {
-//   const cells = Gameboard.board.cells;
-
-//   const win =  (array, start, nth) => {
-//     for (let i = 0; i < array.length; i += nth) {
-//          if (array[i].classList.contains('X') && !winnerX.includes(array[i])) {
-//           winnerX.push(array[i]);
-//          }
-     
-//         }
-//     for (let i = 0; i < array.length; i += nth) {
-//       if (array[i].classList.contains('O') && !winnerO.includes(array[i])) {
-//        winnerO.push(array[i]);
-//       }
-//     }
- 
-//   }
-  
-
-
-const checkWin = (() => {
-  let winner = [];
-  const cells = Gameboard.board.cells;
-  const win =  (array, start, nth) => {
-    for (let i = start; i < array.length; i += nth) {
-         if (array[i].classList.contains('X') && !winner.includes(array[i])) {
-         
-         }
-        
-         }
-         }
-     
-        
-    // for (let i = start; i < array.length; i += nth) {
-    //   if (array[i].classList.contains('O') && !winnerO.includes(array[i])) {
-    //    winnerO.push(array[i]);
-    //   }
-    // }
-        
-
-
-        document.body.addEventListener('click', () => {
-
-    win(cells, 0, 1);
-    win(cells, 0, 2);
-    win(cells, 0, 3);
-})})()
