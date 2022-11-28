@@ -18,16 +18,44 @@ If every 3rd item in the array has the same class
 //Check winner, should check for three in a row and a tie
 
 //if 0, 1, 2 === equal - win
+         if i = 0 and the value increases by 1 and length < 3.
+         total 3
 //if 3, 4, 5 === equal - win
+         if i = 3 and ---
+         if array[i].value = i + 1
+         winnerArray.push(array[i])
+
+         array.reduce(a, b => {
+            if (b.value = a.value+1) {
+               array.push(array)
+            }
+         })
+
+         total 12
 //if 6, 7, 8 === equal - win
+         if i = 6 and ---
 
+         total 21
 //if 0, 3, 6 === equal - win
+         if i = 0 and value increases by 2 --
+         
+         total 9;
 //if 1, 4, 7 === equal - win
+         if i = 1 and value increases by 3 --
+         total 12
 //if 2, 5, 8 === equal - win
+         if i = 2 and value increases by 3 --
 
+
+         total 15
 //if 0, 4, 8 === equal - win
-//if 2, 4, 6 === equal - win
+         if i = 0 and value increases by 4 --
 
+         total 12
+//if 2, 4, 6 === equal - win
+         if i = 2 and value increases by 2 --
+
+         total 12
 //if none of the above & 8 cells marked === tie
 
 
