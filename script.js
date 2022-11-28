@@ -42,7 +42,11 @@ const gamePlay = (() => {
       Gameboard.board.cells.forEach(element => {  
         element.addEventListener('click', (e) => {
        if (!turn && !e.target.classList.contains('O')) {
-            e.target.classList.add('X');
+          e.target = {
+            marker: 'X',
+          }
+          console.log(e.target);           
+           e.target.classList.add('X');
             turn = true;
             }
           else if (turn && !e.target.classList.contains('X')) {
@@ -53,10 +57,50 @@ const gamePlay = (() => {
        
 });
 
-  let checkWin = (() => {
+  let checkWin = () => {
+    const cells =  Gameboard.board.cells;
+    
+       let rowOne = [cells[0], cells[1], cells[2]];
+       let rowTwo = [cells[3], cells[4], cells[5]];
+       let rowThree = [cells[6], cells[7], cells[8]];
+       let columnOne = [cells[0], cells[3], cells[6]];
+       let columnTwo = [cells[1], cells[4], cells[7]];
+       let columnThree = [cells[2], cells[5], cells[8]];
+       let diagonalOne = [cells[0], cells[4], cells[8]];
+       let diagonalTwo = [cells[2], cells [4], cells[6]];
 
-  })
-  
+       let win =  [rowOne, rowTwo, rowThree, columnOne, columnTwo, columnThree, diagonalOne, diagonalTwo];
+       console.log(win)
+   
+       
+        win.forEach(element => {
+      
+
+          element.map((i) => { 
+         
+            if (i.classList.contains('X') && !element.includes('O')) {
+            element.push('X')
+              if (element.length > 5) {
+                console.log('WUBBAWUBDUB X wins');
+                return;
+              }
+            }
+          
+          if (i.classList.contains('O') && !element.includes('X')) {
+            element.push('O')
+            if (element.length > 5) {
+              console.log('WUBBAWUBDUB O wins');
+              return;
+            }
+            }
+          
+          })
+          
+        })
+
+       
+};
+document.body.addEventListener('click', () => {checkWin()});
  return {
   turn,
   checkWin
