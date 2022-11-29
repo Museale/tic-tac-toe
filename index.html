@@ -6,18 +6,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tic-Tac-Toe</title>
     <script src="script.js" defer></script>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="./css/normalize.css/normalize.css">
 </head>
 <body>
     <wrapper id="wrapper">
-        <div id="btns">
-            <button id="clear">Clear Board</button>
+        <div id="inputs">
             <label for="player-one">Player One:</label>
-            <input type="text" id="player-one" placeholder="">
+            <input type="text" id="player-one" placeholder="Player One">
             <label for="player-two">Player Two:</label>
-            <input type="text" id="player-two" placeholder="">
+            <input type="text" id="player-two" placeholder="Player Two">
         </div>
-
+        <div id="btns">
+     
+            <button id="start">Play Against a Friend</button>
+            <button id="computer-btn">Play Against Computer</button>
+            <button id="clear">Clear Board</button>
+        </div>
+        <div id="modal" style="visibility: hidden; position: absolute;">GAME OVER!</div>
         <div id="gameboard-container">
             <div></div>
             <div></div>

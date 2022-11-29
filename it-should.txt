@@ -80,3 +80,10 @@ or the first in row 1, second in row 2, and 3rd in row 3
 
 or the third, second, and first in each row
 
+
+Playing against computer:
+
+There should be an option to play against computer
+computer should be assigned marker ̈́"O"
+computer should wait its turn and randomly choose a cell to place its marker
+computer should favour placing its marker in X or O arrays that are > 5
