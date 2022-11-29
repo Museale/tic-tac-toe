@@ -30,14 +30,12 @@ const Gameboard = (() => {
     
 
 const gamePlay = (() => {
- 
-
   let turn = false; 
   let winner = '';
   let tie = 0;
   const cells =  Gameboard.board.cells;
    
-  const playerOne = () =>  document.getElementById('player-one').value;
+  const playerOne = () => document.getElementById('player-one').value;
   const playerTwo = () => document.getElementById('player-two').value;
 
   const start = (() => {

@@ -1,8 +1,8 @@
 *  {
     box-sizing: border-box;
-    font-family: cursive;
-    font-weight: light;
- 
+    
+    border-radius: 50px;
+
 }
 body {
     display: grid;
@@ -14,6 +14,15 @@ body {
 }
 
 #wrapper {
+    border:#ad9191 10px solid;
+    border-bottom: #aa9292 8px solid;
+    border-left: none;
+    border-top: none;
+    background: #b89d9d;
+    box-shadow: inset 20px 20px 60px #9c8585,
+                inset -20px -20px 60px #d4b5b5,
+                20px 15px 30px #9c858586;
+
     display: grid;
     grid-template-columns: 1fr ;
     grid-template-rows: 5fr 1fr 1fr;
@@ -22,13 +31,11 @@ body {
     justify-content: center;
     align-content: center;
     justify-items: center;
-    border: 5px rgb(143, 188, 180) solid;
-    background-color: rgb(192, 229, 229);    
     border-radius: 50px;
     padding: 2rem;
 }
 #wrapper > #inputs {
-    grid-row: 3;
+    grid-row: 2;
     color:rgba(77, 9, 77, 0.644);
     label {
         visibility: hidden;
@@ -37,11 +44,12 @@ body {
         text-align: center;
     }
     input {
-        border:rgba(77, 9, 77, 0.644) 1px solid;
+        border:none;
         border-radius: 50px;
         padding: 5px;
         margin: 20px;
-       
+        text-align: center;
+        color: rgba(77, 9, 77, 0.644)
     }
     input:focus {
         border: none;
@@ -49,39 +57,39 @@ body {
     }
     input::placeholder {
         color: rgba(77, 9, 77, 0.644);
+        text-align: center;
     }
 
 }
 #wrapper > #btns {
-    grid-row: 2;
+    grid-row: 3;
     justify-content: space-around;
     align-items: center;
     
     grid-column: 1 / span 2;
     button {
-        border:rgba(77, 9, 77, 0.644) 1px solid;
+        border: none;
+        padding: 10px;
+        color: white;
         margin: 20px;
         border-radius: 50px;
-        padding: 2px;
-        background-color: rgba(77, 9, 77, 0.644);
-        color: white;
-        padding: 5px;
-        box-shadow: 2px 2px 2px rgba(77, 9, 77, 0.185);
+        height: 48px;
+        background: #b89d9d;
+        box-shadow: inset 5px 5px 10px #9c8585,
+            inset -5px -5px 10px #d4b5b5;
     }
     button:hover {
-        transform: scale(1.1);
+        transform: scale(0.97);
         cursor: pointer;
         transition: 0.12s ease-in-out;
     }
-
-
 }
 
 #gameboard-container {
     grid-row: 1;
     grid-column: 1 / span 2;
     border: 1px solid rgba(77, 9, 77, 0.185);
-    background-color: rgb(228, 240, 239);
+    background-color: rgb(212, 246, 252);
     padding: 25px;
     border-radius: 5px;
     display: grid;
@@ -135,11 +143,17 @@ body {
     font-size: 100px;
     align-items: center;
     justify-content: center;
+    
+        font-family: 'PressStart2PRegular';
+        font-weight: light;
+        font-style: normal;
+     
+    
 }
 
 .X::before {
     content: "X";
-
+    
 }
 
 .O::before {
