@@ -34,13 +34,16 @@ const gamePlay = (() => {
   let winner = '';
   let tie = 0;
   const cells =  Gameboard.board.cells;
-   
+
+  const modal = () => document.getElementById('modal');
+  const modalPara = () => document.getElementById('modal-para');
   const playerOne = () => document.getElementById('player-one').value;
   const playerTwo = () => document.getElementById('player-two').value;
 
   const start = (() => {
       document.getElementById('start').addEventListener('click', () => {
-        alert(`May the best one win, ${playerOne()} is X and ${playerTwo()} is O!`)
+        modalPara().textContent = `May the best one win, ${playerOne()} is X and ${playerTwo()} is O!`;
+        modal().style = "opacity: 1"
       })
     })();
           cells.forEach(element => {  
@@ -49,6 +52,8 @@ const gamePlay = (() => {
             if (!winner) {
                 if (tie == 9) {
                   console.log('tie')
+                  modalPara().textContent = "EVERYBODY'S A LOSER."
+                  modal().style = "opacity: 1"
                 }
                 if (!turn && !e.target.classList.contains('O')) {
                   e.target.classList.add('X');
@@ -60,7 +65,8 @@ const gamePlay = (() => {
                   }}
           });
     });
-      
+      //Create new arrays for each winning posibility
+
       const checkWin = () => {
           let rowOne = 
           [cells[0], cells[1], cells[2]];
@@ -80,7 +86,9 @@ const gamePlay = (() => {
           [cells[2], cells[4], cells[6]];
 
           let win = [rowOne, rowTwo, rowThree, columnOne, columnTwo, columnThree, diagonalOne, diagonalTwo];
-          
+
+          //map through each element in the win array and check if length is 6
+
             win.forEach(element => { 
               element.map((i) => { 
                 if (i.classList.contains('X') && !element.includes('O')) {
@@ -88,7 +96,8 @@ const gamePlay = (() => {
                   if (element.length > 5) {
                     winner = 'X';
                     console.log('WUBBAWUBDUB X wins', winner);
-                    alert(`${playerOne()} wins`)
+                    modal().style = "opacity: 1";
+                    modalPara().textContent = `Congratulations ${playerOne()} X WINS!`;
                     return winner;
                     }
                   }
@@ -97,7 +106,8 @@ const gamePlay = (() => {
                   if (element.length > 5) {
                     winner = 'O';
                     console.log('WUBBAWUBDUB O wins', winner);
-                    alert(`${playerTwo()} wins`)
+                    modalPara().textContent = `Congratulations ${playerTwo()} O WINS!`;
+                    modal().style = "opacity: 1";
                     return winner;
                     }
                   }
@@ -114,6 +124,15 @@ const gamePlay = (() => {
 })();
 
 
-const playAgainstAI = () => {
 
-}
+// const getElements = () => {
+//   const getModal = () => document.getElementById('modal');
+//   const getPlayerOne = () => document.getElementById('player-one').value;
+//   const getPlayerTwo = () => document.getElementById('player-two').value;
+//   return {
+//     getModal,
+//     getPlayerOne,
+//     getPlayerTwo
+//   }
+// }
+
