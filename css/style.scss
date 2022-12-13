@@ -105,9 +105,17 @@ body {
 
 #gameboard-container > div {
     border: 1px solid rgba(77, 9, 77, 0.185);
-    color: rgb(254, 255, 255);
+    color: rgba(254, 255, 255, 0.685);
 }
+#gameboard-container > div:hover {
+    transform: scale(1.1);
+    cursor: pointer;
+    transition: 0.32s ease-in-out;
+    background-color: rgb(181, 247, 243);
+    
 
+    
+}
 #gameboard-container {
 
  div:nth-child(1) {
