@@ -4,6 +4,7 @@ const gameboard = (() => {
     let gameboardObj = {
 
     cacheDom: (function () {
+      this.wrapper = document.getElementById('gameboard-wrapper');
       this.modal = document.getElementById('modal');
       this.modalPara = document.getElementById('modal-para');
       this.computerBtn = document.getElementById('computer-btn');
@@ -30,6 +31,8 @@ const gameboard = (() => {
       });
 
       this.startBtn.addEventListener('click', () => {
+        this.wrapper.style = "opacity: 1;"
+        this.wrapper.classList.add('ease-in');
         playWithFriend = true;
         console.log(playWithFriend)
         this.modal.style = 'opacity: 1';
@@ -115,6 +118,7 @@ const gameplay =  (() => {
                 if (key.length >= 5) {
                   console.log('longer than five');
                   modal.style = 'opacity: 1';
+                  gameboardContainer.style = "background: grey";
                   modalPara.textContent = `Congratulations ${playerTwo()} O WINS!`;;
                   return winner = 'O';
               }

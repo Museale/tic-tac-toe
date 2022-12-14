@@ -1,0 +1,81 @@
+@import "_mixin";
+
+#inputs {
+    display: flex;
+    grid-row: 3;
+    @include centerAll;
+  }
+ #inputs label {
+    visibility: hidden;
+    position: absolute;
+    padding: 1px;
+    text-align: center;
+  }
+   #inputs input {
+    border: 1px black solid;
+    border-radius: 50px;
+    padding: 5px;
+    margin: 20px;
+    text-align: center;
+    @include centerAll;
+ 
+  }
+
+ #inputs input::placeholder {
+    text-align: center;
+  }
+  
+  #btns {
+    grid-row: 4;
+    justify-content: space-around;
+    align-items: center;
+    grid-column: 1/span 2;
+  }
+  > #btns button {
+    border: none;
+    padding: 10px;
+    margin: 20px;
+    border-radius: 50px;
+    height: 48px;
+  }
+    #btns button:hover {
+    transform: scale(0.97);
+    cursor: pointer;
+    transition: 0.12s ease-in-out;
+  }
+
+  #inputs {
+    grid-row: 3;
+    @include centerAll;
+    input {
+        border: 1px black solid;
+        border-radius: 50px;
+        padding: 5px;
+        margin: 20px;
+        text-align: center;
+    }
+    input:focus {
+        outline: none;
+    }
+    input::placeholder {
+        text-align: center;
+    }
+}
+ #btns {
+    grid-row: 4;
+    justify-content: space-around;
+    align-items: center;
+    grid-column: 1 / span 2;
+    button {
+        border: none;
+        padding: 10px;
+        margin: 20px;
+        border-radius: 50px;
+        height: 48px;
+    }
+    button:hover {
+        transform: scale(0.97);
+        cursor: pointer;
+        transition: 0.12s ease-in-out;
+    }
+}
