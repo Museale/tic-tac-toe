@@ -1,18 +1,46 @@
 #icon-wrapper {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: 2fr 180px 2fr;
     @include centerAll;
-    border: 1px solid black;
     padding: 1rem;
     #player-one-icon, 
     #player-two-icon {
     height: 250px;
     aspect-ratio: 1;
-    border: 1px solid black;
-}
-#player-one-icon {
-    background-image: url(soot-spirit.gif);
     background-position: center;
     background-size: contain;
+    cursor: pointer;
 }
+#player-one-wrapper,
+#player-two-wrapper {
+    border: 1px solid white;
+    border-radius: 5px;
+}
+
+#player-one-icon {
+    background-image: url(/css/images/3ABCC2D1-1729-47E7-B9E5-3199027A1332.png);
+    filter: drop-shadow(22px 32px 60px rgb(255, 255, 255));
+   border-radius: 50%;
+}
+
+#player-two-icon {
+    background-image: url(/css/images/IMG_3050.png);
+    filter: drop-shadow(22px 32px 60px rgb(255, 255, 255))
+}
+#player-one-icon:hover {
+    background-image: url(/css/images/soot-spirit.gif);
+    filter: drop-shadow(22px 32px 60px rgb(255, 255, 255))
+}
+#player-two-icon:hover {
+    background-image: url(/css/images/mini-toto.gif);
+    filter: drop-shadow(22px 32px 60px rgb(255, 255, 255))
+}
+}
+
+.icon-wrap:hover {
+    transform: scale(1.021);
+    transition: 1s;
+  
+    text-shadow: 2px 2px 8px white;
+  
 }

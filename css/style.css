@@ -1,6 +1,7 @@
 #inputs {
-  display: flex;
-  grid-row: 3;
+  display: grid;
+  grid-template-columns: 2fr 2fr;
+  gap: 180px;
   align-items: center;
   justify-content: center;
   justify-items: center;
@@ -39,10 +40,8 @@
 }
 
 #btns {
-  grid-row: 4;
-  justify-content: space-around;
-  align-items: center;
-  grid-column: 1/span 2;
+  display: flex;
+  justify-content: space-evenly;
 }
 
 > #btns button {
@@ -106,13 +105,7 @@
 }
 
 #gameboard-wrapper {
-  opacity: 0;
-  border: 3px rgba(0, 0, 0, 0.685) solid;
-  border-right: 8px solid rgba(0, 0, 0, 0.527);
-  border-bottom: rgba(0, 0, 0, 0.411) 6px solid;
   display: grid;
-  grid-template-columns: 1fr;
-  grid-template-rows: 1fr 5fr 1fr 1fr;
   width: 100%;
   align-items: center;
   justify-content: center;
@@ -123,6 +116,7 @@
 }
 
 #gameboard-container {
+  overflow: hidden;
   grid-row: 2;
   grid-column: 1/span 2;
   display: grid;
@@ -133,6 +127,27 @@
   border-radius: 15px;
   width: 500px;
   height: 500px;
+  box-shadow: 4px 3px 20px white;
+  -webkit-animation-name: identifier;
+          animation-name: identifier;
+  -webkit-animation-duration: 2s;
+          animation-duration: 2s;
+}
+@-webkit-keyframes identifier {
+  from {
+    transform: translateY(200%);
+  }
+  to {
+    transform: translateY(0%);
+  }
+}
+@keyframes identifier {
+  from {
+    transform: translateY(200%);
+  }
+  to {
+    transform: translateY(0%);
+  }
 }
 
 #gameboard-container > div {
@@ -200,34 +215,61 @@
 
 #icon-wrapper {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: 2fr 180px 2fr;
   align-items: center;
   justify-content: center;
   justify-items: center;
   align-content: center;
-  border: 1px solid black;
   padding: 1rem;
 }
 #icon-wrapper #player-one-icon,
 #icon-wrapper #player-two-icon {
   height: 250px;
   aspect-ratio: 1;
-  border: 1px solid black;
-}
-#icon-wrapper #player-one-icon {
-  background-image: url(soot-spirit.gif);
   background-position: center;
   background-size: contain;
+  cursor: pointer;
+}
+#icon-wrapper #player-one-wrapper,
+#icon-wrapper #player-two-wrapper {
+  border: 1px solid white;
+  border-radius: 5px;
+}
+#icon-wrapper #player-one-icon {
+  background-image: url(/css/images/3ABCC2D1-1729-47E7-B9E5-3199027A1332.png);
+  filter: drop-shadow(22px 32px 60px rgb(255, 255, 255));
+  border-radius: 50%;
+}
+#icon-wrapper #player-two-icon {
+  background-image: url(/css/images/IMG_3050.png);
+  filter: drop-shadow(22px 32px 60px rgb(255, 255, 255));
+}
+#icon-wrapper #player-one-icon:hover {
+  background-image: url(/css/images/soot-spirit.gif);
+  filter: drop-shadow(22px 32px 60px rgb(255, 255, 255));
+}
+#icon-wrapper #player-two-icon:hover {
+  background-image: url(/css/images/mini-toto.gif);
+  filter: drop-shadow(22px 32px 60px rgb(255, 255, 255));
+}
+
+.icon-wrap:hover {
+  transform: scale(1.021);
+  transition: 1s;
+  text-shadow: 2px 2px 8px white;
 }
 
 :root {
-  background-color: white;
+  background-color: black;
+  color: white;
   font-family: "CRASSROOTSAltREG";
+  overflow: hidden;
 }
 
 * {
   box-sizing: border-box;
   border-radius: 50px;
+  text-align: center;
 }
 
 body {
@@ -253,4 +295,16 @@ body {
 
 .ease-in {
   translate: 2s ease-in-out;
+}
+
+h2 {
+  font-size: 58px;
+  font-weight: lighter;
+  color: white;
+}
+
+p {
+  font-size: 40px;
+  margin-bottom: 10px;
+  color: black;
 }/*# sourceMappingURL=style.css.map */

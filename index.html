@@ -21,12 +21,19 @@
 <div id="page-one-wrapper">
     
     <div id="icon-wrapper">
-    
-        <div id ="player-one-icon">
-    
+       
+        <div id="player-one-wrapper" class="icon-wrap">
+            <p>X</p>
+            <div id ="player-one-icon">
+            </div>
         </div>
-        <div id ="player-two-icon">
-    
+        <div><h2>VS.</h2></div>
+        <div id="player-two-wrapper" class="icon-wrap">
+            <p>O</p>
+            <div id ="player-two-icon">
+            </div>
+        </div>
+
         </div>
         <div id="inputs">
             <label for="player-one">Player One:</label>
@@ -34,12 +41,13 @@
             <label for="player-two">Player Two:</label>
             <input type="text" id="player-two" placeholder="Player Two">
         </div>
-        </div>
+        
         <div id="btns">
     
             <button id="start">Play Against a Friend</button>
-            <button id="computer-btn">Play Against Computer</button>
             <button id="clear">Clear Board</button>
+            <button id="computer-btn">Play Against Computer</button>
+           
         </div>
      
 </div>
