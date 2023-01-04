@@ -18,7 +18,7 @@ const gameboard = (() => {
       if (playWithFriend) {
         this.playerTwo = () => document.getElementById('player-two').value;
       } else {
-        this.playerTwo = 'AI';
+        return this.playerTwo = 'AI';
       }
      
     })(),
@@ -48,15 +48,20 @@ const gameboard = (() => {
 
       cells.forEach(element => {
           element.addEventListener('click', (e) => {
+          e.target.classList.add('picked');
           gameplay.checkplay.checkWin(e.target);
         });
       });
   })()
   
   }
-  return {gameboardObj, cells, playWithFriend, playAgainstComputer}
+  return {
+    gameboardObj, 
+    cells, 
+    playWithFriend, 
+    playAgainstComputer
+  }
   })();
-  
 
 const gameplay =  (() => {
   let turn = false;
@@ -65,7 +70,6 @@ const gameplay =  (() => {
   let cells = gameboard.cells;
   let playWithFriend = gameboard.playWithFriend;
   let playAgainstComputer = gameboard.playAgainstComputer;
-
 
   const checkplay =  {
       
@@ -83,12 +87,8 @@ const gameplay =  (() => {
     computerPlay: function () {
       if (playAgainstComputer) {
         playerTwo = 'Computer';
-        console.log(playerTwo)
         const min = 0;
         const max = cells.length;
-        console.log(max)
-        
-        console.log(computerChoice)
     
       return computerChoice;
       }
@@ -96,7 +96,6 @@ const gameplay =  (() => {
 
     checkWin: function (e) {
       tie++;
-     
         const min = 0;
         const max = cells.length;
       if (!winner) {
@@ -109,25 +108,23 @@ const gameplay =  (() => {
             turn = true;
             if (playAgainstComputer) {
               const computerChoice = () => Math.floor(Math.random()* (max - min + 1) + min);
-              e = cells[computerChoice()];
-              if (!e.classList.contains('X')) {
-                e.classList.add('O')
-              } 
-              else {
-                e = cells[computerChoice()];
-              }
-              console.log(e)
-              turn = false;
+                for (let i = 0; i < cells.length; i++) {
+                  e = cells[computerChoice()];
+                    if (e && !e.classList.contains('picked')) {
+                      tie ++;
+                      e.classList.add('O')
+                      e.classList.add('picked')
+                      turn = false;
+                    break;
+                    } 
+                }
             }
-            }
+        }
           else if (turn && !e.classList.contains('X')) {
-          
             e.classList.add('O');
             turn = false;
             }
-            console.log(e)
       };
-
         const entries = Object.entries(this.win);
 
         const mappedProperties = entries.map((key) => { 
@@ -158,10 +155,3 @@ const gameplay =  (() => {
   return {checkplay, winner};
 })();
 
-//If !playwithfriend then playertwo == computerPlay
-  //computerplay will wait its turn, 
-  //make a random move between cell 0-9 
-  //!cell has class of 'X' then mark cell 'O' add class 'O'
-
-
-  
