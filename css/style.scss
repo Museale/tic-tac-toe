@@ -31,7 +31,6 @@ body {
 
 #modal {
     display: flex;
-    opacity: 0;
     flex-direction: column;
     justify-content: center;
     align-items: center;
@@ -39,6 +38,11 @@ body {
     height: 70px;
     margin-bottom: 1rem;
     font-size: 20px;
+    color: white;
+    #modal-para {
+        color: white;
+        margin-bottom: 5rem;
+    }
 }
 .ease-in {
     translate: 2s ease-in-out;
@@ -54,4 +58,8 @@ p {
     font-size: 40px;
     margin-bottom: 10px;
     color: black;
+}
+
+.Gray {
+    background-color: rgba(128, 128, 128, 0.226);
 }

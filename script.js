@@ -1,6 +1,8 @@
 const gameboard = (() => {
     let cells = [];
     let playWithFriend = false;
+    let playAgainstComputer = true;
+
     let gameboardObj = {
 
     cacheDom: (function () {
@@ -13,7 +15,12 @@ const gameboard = (() => {
       this.gameboardContainer = document.getElementById('gameboard-container');
       this.gameboardContainerDivs = Array.from(document.querySelectorAll('#gameboard-container > div'));
       this.playerOne = () => document.getElementById('player-one').value;
-      this.playerTwo = () => document.getElementById('player-two').value;
+      if (playWithFriend) {
+        this.playerTwo = () => document.getElementById('player-two').value;
+      } else {
+        this.playerTwo = 'AI';
+      }
+     
     })(),
 
     placeCells: (function(){
@@ -43,22 +50,23 @@ const gameboard = (() => {
           element.addEventListener('click', (e) => {
           gameplay.checkplay.checkWin(e.target);
         });
-     });
+      });
   })()
   
   }
-  return {gameboardObj, cells, playWithFriend}
+  return {gameboardObj, cells, playWithFriend, playAgainstComputer}
   })();
   
 
 const gameplay =  (() => {
-  
   let turn = false;
   let tie = 0;
   let winner = '';
   let cells = gameboard.cells;
   let playWithFriend = gameboard.playWithFriend;
-  console.log(playWithFriend)
+  let playAgainstComputer = gameboard.playAgainstComputer;
+
+
   const checkplay =  {
       
     win: {
@@ -73,15 +81,24 @@ const gameplay =  (() => {
     },
 
     computerPlay: function () {
-      if (!playWithFriend) {
+      if (playAgainstComputer) {
         playerTwo = 'Computer';
         console.log(playerTwo)
+        const min = 0;
+        const max = cells.length;
+        console.log(max)
+        
+        console.log(computerChoice)
+    
+      return computerChoice;
       }
     },
 
     checkWin: function (e) {
       tie++;
-  
+     
+        const min = 0;
+        const max = cells.length;
       if (!winner) {
         if (tie == 9) {
           modalPara.textContent = "EVERYBODY'S A LOSER."
@@ -89,14 +106,26 @@ const gameplay =  (() => {
         }
           if (!turn && !e.classList.contains('O')) {
             e.classList.add('X');
-          
             turn = true;
+            if (playAgainstComputer) {
+              const computerChoice = () => Math.floor(Math.random()* (max - min + 1) + min);
+              e = cells[computerChoice()];
+              if (!e.classList.contains('X')) {
+                e.classList.add('O')
+              } 
+              else {
+                e = cells[computerChoice()];
+              }
+              console.log(e)
+              turn = false;
+            }
             }
           else if (turn && !e.classList.contains('X')) {
+          
             e.classList.add('O');
- 
             turn = false;
             }
+            console.log(e)
       };
 
         const entries = Object.entries(this.win);
@@ -129,9 +158,10 @@ const gameplay =  (() => {
   return {checkplay, winner};
 })();
 
-
-
 //If !playwithfriend then playertwo == computerPlay
   //computerplay will wait its turn, 
   //make a random move between cell 0-9 
   //!cell has class of 'X' then mark cell 'O' add class 'O'
+
+
+  
