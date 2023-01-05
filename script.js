@@ -1,7 +1,6 @@
 const gameboard = (() => {
+
     let cells = [];
-    let playWithFriend = false;
-    let playAgainstComputer = true;
 
     let gameboardObj = {
 
@@ -15,12 +14,13 @@ const gameboard = (() => {
       this.gameboardContainer = document.getElementById('gameboard-container');
       this.gameboardContainerDivs = Array.from(document.querySelectorAll('#gameboard-container > div'));
       this.playerOne = () => document.getElementById('player-one').value;
-      if (playWithFriend) {
-        this.playerTwo = () => document.getElementById('player-two').value;
-      } else {
+      this.playerTwo = () => {
+        if (gameboardObj.playAgainstFriend) {
+          document.getElementById('player-two').value;
+        } else {
         return this.playerTwo = 'AI';
-      }
-     
+        }
+      };
     })(),
 
     placeCells: (function(){
@@ -40,11 +40,17 @@ const gameboard = (() => {
       this.startBtn.addEventListener('click', () => {
         this.wrapper.style = "opacity: 1;"
         this.wrapper.classList.add('ease-in');
-        playWithFriend = true;
-        console.log(playWithFriend)
+        gameboardObj.playAgainstFriend= 'true';
+        gameboardObj.playAgainstComputer = 'false';
         this.modal.style = 'opacity: 1';
         this.modalPara.textContent =  `May the best one win ${this.playerOne()} is X and ${this.playerTwo()} is O`;
       });
+
+      this.computerBtn.addEventListener('click', () => {
+        this.modalPara.textContent = 'Playing against AI';
+        gameboardObj.playAgainstComputer = 'true';
+        gameboardObj.playAgainstFriend = 'false';
+      })
 
       cells.forEach(element => {
           element.addEventListener('click', (e) => {
@@ -58,8 +64,7 @@ const gameboard = (() => {
   return {
     gameboardObj, 
     cells, 
-    playWithFriend, 
-    playAgainstComputer
+  
   }
   })();
 
@@ -68,8 +73,6 @@ const gameplay =  (() => {
   let tie = 0;
   let winner = '';
   let cells = gameboard.cells;
-  let playWithFriend = gameboard.playWithFriend;
-  let playAgainstComputer = gameboard.playAgainstComputer;
 
   const checkplay =  {
       
@@ -84,74 +87,65 @@ const gameplay =  (() => {
       diagonalTwo:[cells[2], cells[4], cells[6]],
     },
 
-    computerPlay: function () {
-      if (playAgainstComputer) {
-        playerTwo = 'Computer';
-        const min = 0;
-        const max = cells.length;
-    
-      return computerChoice;
-      }
-    },
-
     checkWin: function (e) {
-      tie++;
-        const min = 0;
-        const max = cells.length;
-      if (!winner) {
-        if (tie == 9) {
-          modalPara.textContent = "EVERYBODY'S A LOSER."
-          modal.style = "opacity: 1"
-        }
-          if (!turn && !e.classList.contains('O')) {
-            e.classList.add('X');
-            turn = true;
-            if (playAgainstComputer) {
-              const computerChoice = () => Math.floor(Math.random()* (max - min + 1) + min);
-                for (let i = 0; i < cells.length; i++) {
-                  e = cells[computerChoice()];
-                    if (e && !e.classList.contains('picked')) {
-                      tie ++;
-                      e.classList.add('O')
-                      e.classList.add('picked')
-                      turn = false;
-                    break;
-                    } 
-                }
-            }
-        }
-          else if (turn && !e.classList.contains('X')) {
-            e.classList.add('O');
-            turn = false;
-            }
-      };
-        const entries = Object.entries(this.win);
+      tie++;  
+      const min = 0;
+      const max = cells.length;
+        if (!winner) {
+          if (tie == 9) {
+            modalPara.textContent = "EVERYBODY'S A LOSER."
+            modal.style = "opacity: 1"
+          }
+            if (!turn && !e.classList.contains('O')) {
+              e.classList.add('X');
+              turn = true;
+              console.log(gameboard.gameboardObj.playAgainstComputer)
+              if (gameboard.gameboardObj.playAgainstComputer === 'true') {
+                const computerChoice = () => Math.floor(Math.random()* (max - min + 1) + min);
+                  for (let i = 0; i < cells.length; i++) {
+                    e = cells[computerChoice()];
+                      if (e && !e.classList.contains('picked')) {
+                        tie ++;
+                        e.classList.add('O')
+                        e.classList.add('picked')
+                        turn = false;
+                      break;
+                      } 
+                  }
+              }
+          }
+            else if (turn && !e.classList.contains('X')) {
+              e.classList.add('O');
+              turn = false;
+              }
+        };
+          const entries = Object.entries(this.win);
 
-        const mappedProperties = entries.map((key) => { 
-            Array.from(key[1]).map((i) => {
-              if (i.classList.contains('X') && !key.includes('O')) {
-                key.push('X');
-                if (key.length >= 5) {
-                  console.log('longer than five');
-                  modal.style = 'opacity: 1';
-                  gameboardContainer.style = "background: grey";
-                  modalPara.textContent = `Congratulations ${playerOne()} X WINS!`;;
-                  return winner = 'X';
+          const mappedProperties = entries.map((key) => { 
+              Array.from(key[1]).map((i) => {
+                if (i.classList.contains('X') && !key.includes('O')) {
+                  key.push('X');
+                  if (key.length >= 5) {
+                    console.log('longer than five');
+                    modal.style = 'opacity: 1';
+                    gameboardContainer.style = "background: grey";
+                    modalPara.textContent = `Congratulations ${playerOne()} X WINS!`;;
+                    return winner = 'X';
+                  }
+                }
+                if (i.classList.contains('O') && !key.includes('X')) {
+                  key.push('O');
+                  if (key.length >= 5) {
+                    console.log('longer than five');
+                    modal.style = 'opacity: 1';
+                    gameboardContainer.style = "background: grey";
+                    modalPara.textContent = `Congratulations ${playerTwo()} O WINS!`;;
+                    return winner = 'O';
                 }
               }
-              if (i.classList.contains('O') && !key.includes('X')) {
-                key.push('O');
-                if (key.length >= 5) {
-                  console.log('longer than five');
-                  modal.style = 'opacity: 1';
-                  gameboardContainer.style = "background: grey";
-                  modalPara.textContent = `Congratulations ${playerTwo()} O WINS!`;;
-                  return winner = 'O';
-              }
-            }
-        })});
+          })});
+        }
       }
-    }
   return {checkplay, winner};
 })();
 
