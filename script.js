@@ -51,6 +51,7 @@ const gameboard = (() => {
         modalPara.textContent = 'Playing against AI';
         gameboardObj.playAgainstComputer = true;
         gameboardObj.playAgainstFriend = false;
+        gameboardContainer.style.visibility ="visible"
       });
 
       cells.forEach(element => {
@@ -81,7 +82,7 @@ const gameplay =  (() => {
   let cells = gameboard.cells;
 
   const checkplay =  {
-      
+
     win: {
       rowOne: [cells[0], cells[1], cells[2]],
       reowTwo: [cells[3], cells[4], cells[5]],
@@ -93,13 +94,19 @@ const gameplay =  (() => {
       diagonalTwo:[cells[2], cells[4], cells[6]],
     },
 
+    minimax: function (e) {
+
+    },
+
     checkWin: function (e) {
       const min = 0;
       const max = cells.length;
+      tie++;
         if (!winner) {
           if (tie == 9) {
             gameboard.modalPara.textContent = "EVERYBODY'S A LOSER."
             gameboard.modal.style = "opacity: 1"
+            gameboard.gameboardContainer.style = "background: grey";
           }
             if (!turn && !e.classList.contains('O')) {
               e.classList.add('X');
@@ -121,11 +128,13 @@ const gameplay =  (() => {
             else if (turn && !e.classList.contains('X')) {
               e.classList.add('O');
               turn = false;
-              tie++;
               }
         };
-          const entries = Object.entries(this.win);
-          const mappedProperties = entries.map((key) => { 
+
+        const entries = Object.entries(this.win);
+
+        
+        entries.map((key) => { 
              for (const i of key[1]) {
                 if (i.classList.contains('X') && !key.includes('O')) {
                   key.push('X');

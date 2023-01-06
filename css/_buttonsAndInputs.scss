@@ -80,3 +80,18 @@
         transition: 0.12s ease-in-out;
     }
 }
+
+#btns button:nth-child(odd):focus {
+  box-shadow: 2px 2px 22px white;
+    @keyframes slideOver {
+    from {
+      transform: translateY(-50%)
+    }
+    to {
+      transform: translateY(0%);
+    }
+  }
+  animation-name: slideOver;
+  animation-duration: 12s;
+  animation-timing-function: cubic-bezier(0.075, 0.82, 0.165, 1);
+}
