@@ -109,8 +109,8 @@
   box-shadow: 2px 2px 22px white;
   -webkit-animation-name: slideOver;
           animation-name: slideOver;
-  -webkit-animation-duration: 12s;
-          animation-duration: 12s;
+  -webkit-animation-duration: 2s;
+          animation-duration: 2s;
   -webkit-animation-timing-function: cubic-bezier(0.075, 0.82, 0.165, 1);
           animation-timing-function: cubic-bezier(0.075, 0.82, 0.165, 1);
 }
