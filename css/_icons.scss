@@ -18,21 +18,22 @@
 }
 
 #player-one-icon {
-    background-image: url(/css/images/3ABCC2D1-1729-47E7-B9E5-3199027A1332.png);
+
+    background-image: url(./images/3ABCC2D1-1729-47E7-B9E5-3199027A1332.png);
     filter: drop-shadow(22px 32px 60px rgb(255, 255, 255));
    border-radius: 50%;
 }
 
 #player-two-icon {
-    background-image: url(/css/images/IMG_3050.png);
+    background-image: url(./images/IMG_3050.png);
     filter: drop-shadow(22px 32px 60px rgb(255, 255, 255))
 }
 #player-one-icon:hover {
-    background-image: url(/css/images/soot-spirit.gif);
+    background-image: url(./images/soot-spirit.gif);
     filter: drop-shadow(22px 32px 60px rgb(255, 255, 255))
 }
 #player-two-icon:hover {
-    background-image: url(/css/images/mini-toto.gif);
+    background-image: url(./images/mini-toto.gif);
     filter: drop-shadow(22px 32px 60px rgb(255, 255, 255))
 }
 }

@@ -32,10 +32,6 @@
   text-align: center;
 }
 
-#inputs input:-ms-input-placeholder {
-  text-align: center;
-}
-
 #inputs input::placeholder {
   text-align: center;
 }
@@ -79,9 +75,6 @@
 #inputs input::-moz-placeholder {
   text-align: center;
 }
-#inputs input:-ms-input-placeholder {
-  text-align: center;
-}
 #inputs input::placeholder {
   text-align: center;
 }
@@ -107,20 +100,9 @@
 
 #btns button:nth-child(odd):focus {
   box-shadow: 2px 2px 22px white;
-  -webkit-animation-name: slideOver;
-          animation-name: slideOver;
-  -webkit-animation-duration: 2s;
-          animation-duration: 2s;
-  -webkit-animation-timing-function: cubic-bezier(0.075, 0.82, 0.165, 1);
-          animation-timing-function: cubic-bezier(0.075, 0.82, 0.165, 1);
-}
-@-webkit-keyframes slideOver {
-  from {
-    transform: translateY(-50%);
-  }
-  to {
-    transform: translateY(0%);
-  }
+  animation-name: slideOver;
+  animation-duration: 2s;
+  animation-timing-function: cubic-bezier(0.075, 0.82, 0.165, 1);
 }
 @keyframes slideOver {
   from {
@@ -154,18 +136,8 @@
   width: 500px;
   height: 500px;
   box-shadow: 4px 3px 20px white;
-  -webkit-animation-name: identifier;
-          animation-name: identifier;
-  -webkit-animation-duration: 2s;
-          animation-duration: 2s;
-}
-@-webkit-keyframes identifier {
-  from {
-    transform: translateY(200%);
-  }
-  to {
-    transform: translateY(0%);
-  }
+  animation-name: identifier;
+  animation-duration: 2s;
 }
 @keyframes identifier {
   from {
@@ -262,20 +234,20 @@
   border-radius: 5px;
 }
 #icon-wrapper #player-one-icon {
-  background-image: url(/css/images/3ABCC2D1-1729-47E7-B9E5-3199027A1332.png);
+  background-image: url(./images/3ABCC2D1-1729-47E7-B9E5-3199027A1332.png);
   filter: drop-shadow(22px 32px 60px rgb(255, 255, 255));
   border-radius: 50%;
 }
 #icon-wrapper #player-two-icon {
-  background-image: url(/css/images/IMG_3050.png);
+  background-image: url(./images/IMG_3050.png);
   filter: drop-shadow(22px 32px 60px rgb(255, 255, 255));
 }
 #icon-wrapper #player-one-icon:hover {
-  background-image: url(/css/images/soot-spirit.gif);
+  background-image: url(./images/soot-spirit.gif);
   filter: drop-shadow(22px 32px 60px rgb(255, 255, 255));
 }
 #icon-wrapper #player-two-icon:hover {
-  background-image: url(/css/images/mini-toto.gif);
+  background-image: url(./images/mini-toto.gif);
   filter: drop-shadow(22px 32px 60px rgb(255, 255, 255));
 }
 
